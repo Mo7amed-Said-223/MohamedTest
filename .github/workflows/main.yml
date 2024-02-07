@@ -1,0 +1,20 @@
+on:
+  push:
+    branches:
+      main
+jobs:
+    deploy_job:
+      runs-on: ubuntu-latest
+      name: deploy
+      steps:
+        - name: Checkout
+          uses: actions/checkout@v2
+        - name: Deploy file
+          uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+          with:
+            username: test-ftp
+            password: test-ftp-2024
+            server: 194.113.64.245
+            port: 21
+            remote_path: '/home/future-developers-ssh/htdocs/ssh.future-developers.cloud/'
+            sftp_only: true
